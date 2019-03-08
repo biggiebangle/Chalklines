@@ -60,7 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LoadOnEnter.cs" />
+    <Compile Include="Assets\Scripts\AudioEnd.cs" />
+    <Compile Include="Assets\Scripts\LoadOnEnter.cs" />
     <Compile Include="Assets\Scripts\TimedSceneControls.cs" />
     <Compile Include="Assets\Scripts\TouchSceneControls.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
