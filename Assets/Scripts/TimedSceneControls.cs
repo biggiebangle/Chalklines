@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class TimedSceneControls : MonoBehaviour
 {
-    [SerializeField]
-    private float delayBeforeLoading = 10f;
+
+    public float delayBeforeLoading = 10f;
     //This is added as a field when added a game component within the scene
-    [SerializeField]
-    private string sceneNameToLoad;
+
+    public string sceneNameToLoad;
 
     private float timeElapsed;
 
