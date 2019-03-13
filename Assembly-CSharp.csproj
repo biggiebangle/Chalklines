@@ -61,7 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioEnd.cs" />
+    <Compile Include="Assets\Scripts\GeolocationControls.cs" />
     <Compile Include="Assets\Scripts\LoadOnEnter.cs" />
+    <Compile Include="Assets\Scripts\Location.cs" />
+    <Compile Include="Assets\Scripts\LocationExample1.cs" />
+    <Compile Include="Assets\Scripts\LocationExample2.cs" />
     <Compile Include="Assets\Scripts\TimedSceneControls.cs" />
     <Compile Include="Assets\Scripts\TouchSceneControls.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -78,6 +82,39 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARCore">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARCore.Editor">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARCore.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARExtensions">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARExtensions.Editor">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARExtensions.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.FaceSubsystem">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.FaceSubsystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Subsystem.Registration">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARFoundation.Editor">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARFoundation">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARKit">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARKit.FaceTracking">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARKit.FaceTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.ARKit.Editor">
+      <HintPath>/Users/catherinecavanagh/apps/chalklines/Chalklines 1.0/Library/ScriptAssemblies/Unity.XR.ARKit.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
