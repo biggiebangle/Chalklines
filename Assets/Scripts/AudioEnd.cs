@@ -23,10 +23,8 @@ public class AudioEnd : MonoBehaviour
     void Start()
     {
         paused = true;
-      buttonText.text = "Play";
+        buttonText.text = "Play";
         timeStarted = false;
-
- 
 }
 
     // Update is called once per frame

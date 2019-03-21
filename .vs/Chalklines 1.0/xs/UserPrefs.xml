@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{F7C411BC-6C02-2C80-0F1B-7C31B9636DD8}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="LocationExample2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CreateTexture.cs">
     <Files>
-      <File FileName="Assets/Scripts/TimedSceneControls.cs" Line="17" Column="1" />
-      <File FileName="Assets/Scripts/TouchSceneControls.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/AudioEnd.cs" Line="64" Column="11" />
-      <File FileName="Assets/Scripts/GeolocationControls.cs" Line="4" Column="33" />
-      <File FileName="Assets/Scripts/LocationExample1.cs" Line="131" Column="1" />
-      <File FileName="LocationExample2.cs" Line="4" Column="1" />
+      <File FileName="Assets/Scripts/TimedSceneControls.cs" Line="2" Column="20" />
+      <File FileName="Assets/Scripts/TouchSceneControls.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AudioEnd.cs" Line="27" Column="29" />
+      <File FileName="Assets/Scripts/LocationControls.cs" Line="34" Column="30" />
+      <File FileName="Assets/Scripts/CreateTexture.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -640,5 +640,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af8b4ddb0d06457980d48d8fd5da2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 10
+  delayBeforeLoading: 5
   sceneNameToLoad: InstructionsChapter1
