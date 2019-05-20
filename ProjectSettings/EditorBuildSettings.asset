@@ -6,15 +6,75 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleCard1.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0f0176ecc2d4540bda93ab5c37103c54
+  - enabled: 1
+    path: Assets/Scenes/TitleCards/TitleCard1.unity
     guid: 172658392b3de4bf69ba17ff16153fcc
   - enabled: 1
-    path: Assets/Scenes/InstructionsChapter1.unity
+    path: Assets/Scenes/InstructionCards/InstructionsChapter1.unity
     guid: 4b4180d1a517f4c9b9ea9d31a1dc72e3
   - enabled: 1
-    path: Assets/Scenes/CameraScene1.unity
+    path: Assets/Scenes/CameraSceneCVMatch/CameraSceneCVMatch1.unity
+    guid: df865a541239a4d8289b185e9175cf61
+  - enabled: 1
+    path: Assets/Scenes/AudioScenes/AudioScene1.unity
+    guid: 91206e9d36b26434a845ef26cdec3134
+  - enabled: 1
+    path: Assets/Scenes/EndCards/EndCard1.unity
+    guid: 7fef6a016b3524dddba1d8db88de883b
+  - enabled: 1
+    path: Assets/Scenes/TitleCards/TitleCard2.unity
+    guid: 428b90e4ac0604a6caf46547637185e8
+  - enabled: 1
+    path: Assets/Scenes/InstructionCards/InstructionsChapter2.unity
+    guid: 7f63143cf3bd943c2b8869255ff793c0
+  - enabled: 1
+    path: Assets/Scenes/CameraSceneCVMatch/CameraSceneGeoLocation.unity
     guid: 12389278e70e7425996485cbda8f844a
   - enabled: 1
-    path: Assets/Scenes/EndCard1.unity
-    guid: 7fef6a016b3524dddba1d8db88de883b
+    path: Assets/Scenes/AudioScenes/AudioScene2.unity
+    guid: b03c3e9b12a2d4b6da670d906de669f9
+  - enabled: 1
+    path: Assets/Scenes/EndCards/EndCard2.unity
+    guid: db388972c625c4b21ac1e36bd80fdc2b
+  - enabled: 1
+    path: Assets/Scenes/TitleCards/TitleCard3.unity
+    guid: 1c0bd5ddd66134472a2c9faffbbc2c20
+  - enabled: 1
+    path: Assets/Scenes/InstructionCards/InstructionsChapter3.unity
+    guid: 72fd74b7e61a248358efb02404f663fe
+  - enabled: 1
+    path: Assets/Scenes/CameraSceneCVMatch/CameraSceneCVMatch3a.unity
+    guid: f24f977cfff17433db92678ebc5df7fa
+  - enabled: 1
+    path: Assets/Scenes/AudioScenes/AudioScene3a.unity
+    guid: 001e8160abaf74055a50ad2e1c69a2f1
+  - enabled: 1
+    path: Assets/Scenes/CameraSceneCVMatch/CameraSceneCVMatch3b.unity
+    guid: 9611861fdb6e642128b609613d0ffda3
+  - enabled: 1
+    path: Assets/Scenes/AudioScenes/AudioScene3b.unity
+    guid: d2e908dcdb77548b4a0f15ccf4f06641
+  - enabled: 1
+    path: Assets/Scenes/EndCards/EndCard3.unity
+    guid: 8b516aacf5d9c48c6a9b13434c8fc083
+  - enabled: 1
+    path: Assets/Scenes/TitleCards/TitleCard4.unity
+    guid: 9b5a4aa1e937e47b198359cf0da91c31
+  - enabled: 1
+    path: Assets/Scenes/InstructionCards/InstructionsChapter4.unity
+    guid: c941c79ed95244fb6b2d2ee7bdca1fbc
+  - enabled: 1
+    path: Assets/Scenes/CameraSceneCVMatch/CameraSceneCVMatch4.unity
+    guid: b4bf8d86bac9c41029fc039cc42afa18
+  - enabled: 1
+    path: Assets/Scenes/AudioScenes/AudioScene4.unity
+    guid: 1befbb67ad84b4157a78f182a28ca897
+  - enabled: 1
+    path: Assets/Scenes/EndCards/EndCard4.unity
+    guid: d39e1a415dc4e4763ace98da90bcf272
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 3d693a1337f884a96b88ac0f9f52a681
   m_configObjects: {}

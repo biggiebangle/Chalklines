@@ -34,3 +34,17 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#Ignore iOS Build and Scripts that were purchased
+ios/ 
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Assets/EffectExamples/
+Assets/OpenCVForUnity/
+
+#Ignore meta files
+*.meta
+

@@ -7,9 +7,13 @@ public class LoadOnEnter : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //Added to State - how do I make it able to take in any scene not a direct number??
+   int sceneToLoad;
+   
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SceneManager.LoadScene(2);
+        sceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -8,6 +8,7 @@ public class AudioEnd : MonoBehaviour
 {
     public GameObject soundControlButton;
     private bool paused;
+    public Animator transitionAnim;
 
     //Audioclip time resets to zero after completion.
     private const int V = 0;
@@ -15,8 +16,8 @@ public class AudioEnd : MonoBehaviour
     private bool timeStarted;
     public Text buttonText;
 
-    public int nextSceneIndex;
-    public AudioSource nameClip;
+    public string nextSceneName;
+    public AudioSource audioName;
 
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class AudioEnd : MonoBehaviour
     void Update()
     {
  
-        StartCoroutine(changeSceneAtEndofAudio());
+        StartCoroutine(ChangeSceneAtEndofAudio());
 
     }
 
@@ -40,7 +41,7 @@ public class AudioEnd : MonoBehaviour
 
         if(paused == true)
         {
-            nameClip.Play();
+            audioName.Play();
             paused = false;
             buttonText.text = "Pause";
 
@@ -48,29 +49,32 @@ public class AudioEnd : MonoBehaviour
         }
         else
         {
-            nameClip.Pause();
+            audioName.Pause();
             paused = true;
             buttonText.text = "Play";
 
         }
     }
     //private IEnumerator waitAudio(int sceneIndex)
-    private IEnumerator changeSceneAtEndofAudio()
+    private IEnumerator ChangeSceneAtEndofAudio()
     {
         //yield return new WaitForSeconds(nameClip.clip.length);
         yield return new WaitForSeconds(5);
         //print(nameClip.time);
-        if (System.Math.Abs(nameClip.time) > V)
+        if (System.Math.Abs(audioName.time) > V)
         {
             timeStarted = true;
         }
         //nameClip.time == nameClip.clip.length
-        if (timeStarted == true && System.Math.Abs(nameClip.time) == V)
+        if (timeStarted == true && System.Math.Abs(audioName.time) == V)
         {
 
             //Fadeout scene - aka trigger animation? or should animation just be at beginning? and stop audio
-            print("at the end");
-            SceneManager.LoadScene(nextSceneIndex);
+
+            print("end audio");
+            transitionAnim.SetTrigger("end");
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene(nextSceneName);
 
         }
 

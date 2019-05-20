@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using LevelControl;
 
+[RequireComponent(typeof(LevelControlScript))]
 public class LocationControls : MonoBehaviour
 {
 
@@ -31,18 +34,23 @@ public class LocationControls : MonoBehaviour
     private string totalDirection;
     private float trueHeading;
 
-    public GameObject button;
-    public Animator buttonAnimator;
+    //public GameObject button;
+    //public Animator buttonAnimator;
 
     public GameObject directionIndicator;
     public Animator indicatorAnimator;
 
+    LevelControlScript LC;
+    int sceneIndex;
+
     void Start()
     {
-        buttonAnimator = GetComponent<Animator>();
+        //buttonAnimator = GetComponent<Animator>();
         targetCoordinates = new Vector2(tLatitude, tLongitude);
+        LC = gameObject.GetComponent<LevelControlScript>();
+
         StartCoroutine(GetLocation());
-      
+
     }
 
     IEnumerator GetLocation()
@@ -120,10 +128,14 @@ public class LocationControls : MonoBehaviour
            //How to keep variables persistent between scenes and yield break when we are finished.
             distance.text = "Distance : " + proximity.ToString();
             detected.text = "Target Detected";
-            buttonAnimator.SetTrigger("LocationFound");
+          // buttonAnimator.SetTrigger("LocationFound");
             NS.text = "";
             WE.text = "";
             internalCompass.text = "";
+            Debug.Log("ACTIVATE");
+            LC.CVMatch();
+            sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(sceneIndex + 1);
 
         }
         else
@@ -132,6 +144,7 @@ public class LocationControls : MonoBehaviour
             //If phone faces the target, attached or animate in a gameobject
            internalCompass.text = "\ntrueHeading: " + Input.compass.trueHeading;
             totalDirection = "";
+            indicatorAnimator.SetTrigger("DirectionLost");
             if  (tLatitude < dLatitude && (Mathf.Abs(tLatitude - dLatitude)) > .0001f)
             {
                 NS.text = "target is South";
@@ -172,38 +185,48 @@ public class LocationControls : MonoBehaviour
                 WE.text = "";
                 WEdirection = "";
             }
+
             totalDirection = NSdirection + WEdirection;
+
             detected.text = "";
             if (totalDirection == "NE" && 0.0f < trueHeading && trueHeading <= 90.0f ) {
                 detected.text = "Direction Detected NE - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "SE" && 90.0f < trueHeading && trueHeading <= 180.0f)
             {
                 detected.text = "Direction Detecte SE - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "SW" && 180.0f < trueHeading && trueHeading <= 270.0f)
             {
                 detected.text = "Direction Detected SW - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "NW" && 270.0f < trueHeading && trueHeading <= 360.0f)
             {
                 detected.text = "Direction Detected NW - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "N" && 315.0f < trueHeading || trueHeading <= 45.0f)
             {
                 detected.text = "Direction Detected N - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "S" && 135.0f < trueHeading && trueHeading <= 225.0f)
             {
                 detected.text = "Direction Detected S - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "E" && 45.0f < trueHeading && trueHeading <= 135.0f)
             {
                 detected.text = "Direction Detected E - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
             if (totalDirection == "W" && 225.0f < trueHeading && trueHeading <= 315.0f)
             {
                 detected.text = "Direction Detected W - Pointing towards target";
+                indicatorAnimator.SetTrigger("DirectionFound");
             }
 
 
