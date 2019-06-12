@@ -10,11 +10,19 @@ public class MainMenuScript : MonoBehaviour
     public Button Chapter2Button, Chapter3Button, Chapter4Button;
     int levelPassed;
     public Animator transitionAnim;
-    //public string sceneName;
+    private LocationService service;
 
-    // Use this for initialization
     void Start()
     {
+        service = Input.location;
+         if (!service.isEnabledByUser)
+        {
+            Debug.Log("Location Services not enabled by user");
+          
+        }
+       service.Start();
+
+
         levelPassed = PlayerPrefs.GetInt("LevelPassed");
         Chapter2Button.interactable = false;
         Chapter3Button.interactable = false;
@@ -43,24 +51,21 @@ public class MainMenuScript : MonoBehaviour
     }
     public void LevelToLoad(string sceneName)
     {
-
-
+    
         StartCoroutine(LoadScene(sceneName));
 
     }
 
 
-    //public void LevelToLoad(int level)
-    //{
-    //SceneManager.LoadScene(level);
     IEnumerator LoadScene(string sceneName)
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+        service.Stop();
         SceneManager.LoadScene(sceneName);
     }
 
-    public void ResetPlayerPrefs()
+        public void ResetPlayerPrefs()
     {
         Chapter2Button.interactable = false;
         Chapter3Button.interactable = false;

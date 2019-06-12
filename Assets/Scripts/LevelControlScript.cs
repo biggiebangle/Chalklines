@@ -31,19 +31,19 @@ namespace LevelControl
         public void CVMatch()
         {
 
-
+            Debug.Log("CVMATCH");
             //if (sceneIndex == 3)
             if (sceneName == "CameraSceneCVMatch1")
             {  //CameraScene1
                
                 PlayerPrefs.SetInt("LevelPassed", 1);
             }
-            else if (sceneName == "CameraSceneGeolocation")
+            else if (sceneName == "CameraSceneGeoLocation")
             {  //CameraScene2
                 Debug.Log("Passing Level 2");
                 PlayerPrefs.SetInt("LevelPassed", 2);
             }
-            else if (sceneName == "CameraSceneCVMatch3a" || sceneName == "CameraSceneCVMatch3a" )
+            else if (sceneName == "CameraSceneCVMatch3a" || sceneName == "CameraSceneCVMatch3b" )
             {  //CameraScene3
                 PlayerPrefs.SetInt("LevelPassed", 3);
             }

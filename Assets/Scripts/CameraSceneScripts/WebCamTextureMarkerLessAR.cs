@@ -19,28 +19,31 @@ using OpenCVForUnity.UnityUtils.Helper;
     /// </summary>
     [RequireComponent (typeof(WebCamTextureToMatHelper))]
     [RequireComponent(typeof(LevelControlScript))]
-public class WebCamTextureMarkerLessARExample : MonoBehaviour
+public class WebCamTextureMarkerLessAR : MonoBehaviour
     {
         /// <summary>
-        /// The pattern raw image.
+        /// The pattern raw image - what is a raw image??
         /// </summary>
         /// 
         /// 
        // public RawImage patternRawImage;
 
-  
-        public Texture2D imageToMatch;
+    public Texture2D imageToMatch;
 
-    //public GameObject fadeToWhiteGameObject;
     public GameObject panelAnimationGameObject;
     Animator Animator;
-    public string nextSceneName;
+    [SerializeField]
+    public string NextSceneName;
+
+    //public GameObject OutlineImageGameObject;
+   //Transform OutlineTransform;
+   //Image OutlineImage;
 
     public GameObject AudioMatchGameObject;
     AudioSource MatchAudio;
 
-    public GameObject ParticleEffectGameObject;
-    ParticleSystem MatchParticles;
+ 
+
     /// <summary>
     /// The AR game object.
     /// </summary>
@@ -102,7 +105,7 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         //public GameObject video;
 
         /// <summary>
-        /// The pattern mat.
+        /// The pattern mat. - Open CV Framework
         /// </summary>
         Mat patternMat;
 
@@ -111,25 +114,27 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         /// </summary>
         Texture2D texture;
 
+
         /// <summary>
         /// The webcam texture to mat helper.
         /// </summary>
         WebCamTextureToMatHelper webCamTextureToMatHelper;
-        LevelControlScript LC;
-    int sceneIndex;
 
-    /// <summary>
-    /// The gray mat.
-    /// </summary>
-    Mat grayMat;
+        LevelControlScript LC;
+        int sceneIndex;
+
+        /// <summary>
+        /// The gray mat.
+        /// </summary>
+        Mat grayMat;
         
         /// <summary>
-        /// The cameraparam matrix.
+        /// The cameraparam matrix. - fixes distortions
         /// </summary>
         Mat camMatrix;
         
         /// <summary>
-        /// The dist coeffs.
+        /// The distortion coefficients - to add to the camera calibration
         /// </summary>
         MatOfDouble distCoeffs;
         
@@ -144,22 +149,24 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         Matrix4x4 invertZM;
 
         /// <summary>
-        /// The transformation matrix.
+        /// The transformation matrix - not sure what this does
         /// </summary>
        //Matrix4x4 transformationM;
         
         /// <summary>
-        /// The transformation matrix for AR.
+        /// The transformation matrix for AR - and looks like I didn't need this as well.
         /// </summary>
        // Matrix4x4 ARM;
 
         /// <summary>
-        /// The pattern.
+        /// The pattern - this is created in the translation? It is using OpenCV classes to create it, but I can't find a reference in OpenCV? :(
         /// </summary>
         Pattern pattern;
+    
 
         /// <summary>
-        /// The pattern tracking info.
+        /// The pattern tracking info - pretty sure I don't need this since we are not placing any 3D objects on any planes this recognizes homography - the way two images are
+        /// related on a plane using rotation and translation.
         /// </summary>
         PatternTrackingInfo patternTrackingInfo;
 
@@ -175,10 +182,13 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         // Use this for initialization
         void Start ()
         {
-       //Animator = fadeToWhiteGameObject.GetComponent<Animator>();
+   
         Animator = panelAnimationGameObject.GetComponent<Animator>();
         MatchAudio = AudioMatchGameObject.GetComponent<AudioSource>();
-        MatchParticles = ParticleEffectGameObject.GetComponent<ParticleSystem>();
+
+       // OutlineTransform = OutlineImageGameObject.GetComponent<Transform>();
+
+        //OutlineImage = OutlineImageGameObject.GetComponent<Image>();
         //displayAxesToggle.isOn = displayAxes;
         //axes.SetActive (displayAxes);
         //displayCubeToggle.isOn = displayCube;
@@ -191,15 +201,29 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         webCamTextureToMatHelper = gameObject.GetComponent<WebCamTextureToMatHelper> ();
         LC = gameObject.GetComponent<LevelControlScript>();
 
+        //Open CV
+        //patternMat = Imgcodecs.imread (Application.persistentDataPath + "/patternImg.jpg");
 
-        // patternMat = Imgcodecs.imread (Application.persistentDataPath + "/patternImg.jpg");
+        //Debug.Log("What is the height of image to match?" + imageToMatch.height);
+        //Debug.Log("What is the scale of outline?" + OutlineTransform.localScale);
+        //Debug.Log("What is the pixel height?" + OutlineImage.sprite.rect.height);
 
+        //float outlineHeight = OutlineImage.sprite.rect.height;
+        //float outlineWidth = OutlineImage.sprite.rect.width;
+        ////Match the outline width and height to the image to match;
+        //Vector3 scale = new Vector3(imageToMatch.width/outlineHeight, imageToMatch.height/outlineWidth, 1f);
+        //OutlineTransform.localScale = scale;
+        //Debug.Log("What is the scale of outline?" + OutlineTransform.localScale);
+    
+        //OpenCV - similiar to Vector2
         patternMat = new Mat(imageToMatch.height, imageToMatch.width, CvType.CV_8UC4);
+   
+        //fills in patternMat with image to match game object? - transforms Texture2D to Mat - why is the size 384?
+        Utils.texture2DToMat(imageToMatch, patternMat);
+        Debug.Log("patternMat dst ToString " + patternMat.ToString());
 
-           
+       
 
-            Utils.texture2DToMat(imageToMatch, patternMat);
-            Debug.Log("patternMat dst ToString " + patternMat.ToString());
         //if (patternMat.total () == 0) {
         //    Debug.Log("patternMat dst ToString ");
 
@@ -207,52 +231,64 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
         //} else {
 
         Imgproc.cvtColor (patternMat, patternMat, Imgproc.COLOR_BGR2RGB);
+           //What is this for - initializes a texture to display the image used for pattern recognition
+        Texture2D patternTexture = new Texture2D (patternMat.width (), patternMat.height (), TextureFormat.RGBA32, false);
+        
+        //To reuse mat, set the flipAfter flag to true.
+        //Why do you need this?? it says Mat to 2Dtexture - makes it available as a 2dtexture...
+        Utils.matToTexture2D (patternMat, patternTexture, true, 0, true);
+        Debug.Log ("patternMat dst ToString " + patternMat.ToString ());
+        
+        //Here is where the image was created and added to the app. Where did it get those numbers for the vector size??
+        //patternRawImage.texture = patternTexture;
+       // patternRawImage.rectTransform.localScale = new Vector3 (1.0f, (float)patternMat.height () / (float)patternMat.width (), 1.0f);
+        
+        pattern = new Pattern ();
 
-                Texture2D patternTexture = new Texture2D (patternMat.width (), patternMat.height (), TextureFormat.RGBA32, false);
-                
-                //To reuse mat, set the flipAfter flag to true.
-                Utils.matToTexture2D (patternMat, patternTexture, true, 0, true);
-                Debug.Log ("patternMat dst ToString " + patternMat.ToString ());
-                
-                //patternRawImage.texture = patternTexture;
-               // patternRawImage.rectTransform.localScale = new Vector3 (1.0f, (float)patternMat.height () / (float)patternMat.width (), 1.0f);
-                
-                pattern = new Pattern ();
-                patternTrackingInfo = new PatternTrackingInfo ();
-                
-                patternDetector = new PatternDetector (null, null, null, true);
-                
-                patternDetector.buildPatternFromImage (patternMat, pattern);
-                patternDetector.train (pattern);
+        //Don't think I Need this...this is for the AR game objects....
+        patternTrackingInfo = new PatternTrackingInfo ();
+        
+        patternDetector = new PatternDetector (null, null, null, true);
+        
+        patternDetector.buildPatternFromImage (patternMat, pattern);
+        patternDetector.train (pattern);
 
 
-                #if UNITY_ANDROID && !UNITY_EDITOR
-                // Avoids the front camera low light issue that occurs in only some Android devices (e.g. Google Pixel, Pixel2).
-                webCamTextureToMatHelper.avoidAndroidFrontCameraLowLightIssue = true;
-                #endif
-                webCamTextureToMatHelper.Initialize ();
+        #if UNITY_ANDROID && !UNITY_EDITOR
+        // Avoids the front camera low light issue that occurs in only some Android devices (e.g. Google Pixel, Pixel2).
+        webCamTextureToMatHelper.avoidAndroidFrontCameraLowLightIssue = true;
+        #endif
+        webCamTextureToMatHelper.Initialize ();
           // }
         }
 
         /// <summary>
         /// Raises the web cam texture to mat helper initialized event.
-        /// </summary>
+        /// </summary>s
         public void OnWebCamTextureToMatHelperInitialized ()
         {
             Debug.Log ("OnWebCamTextureToMatHelperInitialized");
-
+            //This gets the web Cam and returns it as a texture - and transforms it into a Mat for open CV
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat ();
                     
             texture = new Texture2D (webCamTextureMat.width (), webCamTextureMat.height (), TextureFormat.RGBA32, false);
+
+            //What is this game object? - this is probably the AR? Need to check
             gameObject.GetComponent<Renderer> ().material.mainTexture = texture;
 
+      
 
-            grayMat = new Mat (webCamTextureMat.rows (), webCamTextureMat.cols (), CvType.CV_8UC1);
-                    
+        //Transforming it into black and white is part of the detection process.
+        grayMat = new Mat (webCamTextureMat.rows (), webCamTextureMat.cols (), CvType.CV_8UC1);
 
-            gameObject.transform.localScale = new Vector3 (webCamTextureMat.width (), webCamTextureMat.height (), 1);
+        //ooo. This is the transform local scale. sets the height and width. How does the height and width of the patternMat relate??
+        //Once again I need a better understanding of Vector 3 and local scale - The scale of the transform relative to the parent.
+
+        gameObject.transform.localScale = new Vector3 (webCamTextureMat.width (), webCamTextureMat.height (), 1);
+       
             
-            Debug.Log ("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation);
+
+        Debug.Log ("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation);
 
 
             float width = webCamTextureMat.width ();
@@ -263,14 +299,20 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
             float heightScale = (float)Screen.height / height;
             if (widthScale < heightScale) {
                 Camera.main.orthographicSize = (width * (float)Screen.height / (float)Screen.width) / 2;
+                //What is image size scale??
+                //The detection doesn't even use this...
                 imageSizeScale = (float)Screen.height / (float)Screen.width;
+                     //This is where I need to put the size of the outline...Landscape
             } else {
                 Camera.main.orthographicSize = height / 2;
-            }
-            
-            
-            //set cameraparam
-            int max_d = (int)Mathf.Max (width, height);
+                //The detection doesn't even use this...
+                //This is where I need to put the size of the outline...Portrait
+        }
+
+
+        //set cameraparam
+        //Where is the width and height coming from?
+        int max_d = (int)Mathf.Max (width, height);
             double fx = max_d;
             double fy = max_d;
             double cx = width / 2.0f;
@@ -382,13 +424,12 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
                //
                 Debug.Log("ACTIVATE");
                 MatchAudio.Play();
-                MatchParticles.Play();
+              
                 LC.CVMatch();
                 CameraMatch();
-               //Animator.SetTrigger("FadeToWhite");
 
-                //sceneIndex = SceneManager.GetActiveScene().buildIndex;
-                // SceneManager.LoadScene(sceneIndex + 1);
+            
+
 
                 //patternTrackingInfo.computePose (pattern, camMatrix, distCoeffs);
 
@@ -423,17 +464,19 @@ public class WebCamTextureMarkerLessARExample : MonoBehaviour
     {
 
 
-        StartCoroutine(LoadScene());
+       //StartCoroutine(LoadScene());
 
-    }
+  // }
 
 
 
-    IEnumerator LoadScene()
-    {
+   // IEnumerator LoadScene()
+  // {
         Animator.SetTrigger("end");
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(nextSceneName);
+        //Load audio async
+      // yield return new WaitForSeconds(.2f);
+        LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(NextSceneName));
+
     }
     /// <summary>
     /// Raises the destroy event.

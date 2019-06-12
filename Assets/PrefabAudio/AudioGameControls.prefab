@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1540512005289698792}
   - component: {fileID: 1540512005289698798}
   - component: {fileID: 1540512005289698799}
+  - component: {fileID: 7376712622044946339}
   m_Layer: 0
   m_Name: AudioGameControls
   m_TagString: Untagged
@@ -141,6 +142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundControlButton: {fileID: 0}
+  transitionAnim: {fileID: 0}
   buttonText: {fileID: 0}
-  nextSceneIndex: 5
-  nameClip: {fileID: 1540512005289698798}
+  nextSceneName: 
+  audioName: {fileID: 0}
+--- !u!114 &7376712622044946339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540512005289698793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a046068eb404ea081a705deef9344d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

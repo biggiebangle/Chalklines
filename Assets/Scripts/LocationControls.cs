@@ -40,6 +40,10 @@ public class LocationControls : MonoBehaviour
     public GameObject directionIndicator;
     public Animator indicatorAnimator;
 
+    public GameObject AudioMatchGameObject;
+    AudioSource MatchAudio;
+    bool MatchAudioPlayed;
+
     LevelControlScript LC;
     int sceneIndex;
 
@@ -48,6 +52,8 @@ public class LocationControls : MonoBehaviour
         //buttonAnimator = GetComponent<Animator>();
         targetCoordinates = new Vector2(tLatitude, tLongitude);
         LC = gameObject.GetComponent<LevelControlScript>();
+        MatchAudio = AudioMatchGameObject.GetComponent<AudioSource>();
+        MatchAudioPlayed = false;
 
         StartCoroutine(GetLocation());
 
@@ -55,6 +61,7 @@ public class LocationControls : MonoBehaviour
 
     IEnumerator GetLocation()
     {
+        //This doesn't work in Android if you don't have it already enabled before getting to the screen
         service = Input.location;
         if (!enableByRequest && !service.isEnabledByUser)
         {
@@ -123,27 +130,38 @@ public class LocationControls : MonoBehaviour
         proximity = Vector2.Distance(targetCoordinates, deviceCoordinates);
         if (proximity <= idealDistanceFromTarget)
         {
-           
-           //destroy hint object? and set trigger permanent during session, so you can use a back button
-           //How to keep variables persistent between scenes and yield break when we are finished.
+            Debug.Log("ACTIVATE");
+            LC.CVMatch();
+            if (MatchAudioPlayed == false)
+            {
+                MatchAudio.Play();
+                MatchAudioPlayed = true;
+            }
+            //destroy hint object? and set trigger permanent during session, so you can use a back button
+
             distance.text = "Distance : " + proximity.ToString();
             detected.text = "Target Detected";
           // buttonAnimator.SetTrigger("LocationFound");
             NS.text = "";
             WE.text = "";
             internalCompass.text = "";
-            Debug.Log("ACTIVATE");
-            LC.CVMatch();
+            service.Stop();
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(sceneIndex + 1);
+            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(sceneIndex + 1));
 
         }
         else
         {
             distance.text = "Out of Range Distance : " + proximity.ToString(); 
             //If phone faces the target, attached or animate in a gameobject
-           internalCompass.text = "\ntrueHeading: " + Input.compass.trueHeading;
+           internalCompass.text = "True Heading: " + Input.compass.trueHeading;
             totalDirection = "";
+            NS.text = "";
+            WE.text = "";
+            NSdirection = "";
+            WEdirection = "";
+            NSAbsoluteValue.text = "";
+            WEAbsoluteValue.text = "";
             indicatorAnimator.SetTrigger("DirectionLost");
             if  (tLatitude < dLatitude && (Mathf.Abs(tLatitude - dLatitude)) > .0001f)
             {
@@ -156,9 +174,9 @@ public class LocationControls : MonoBehaviour
             else if( tLatitude > dLatitude && (Mathf.Abs(tLatitude - dLatitude)) > .0001f)
             {
                 NS.text = "target is North";
-                NSdirection ="N";
-                float n = Mathf.Abs(tLatitude - dLatitude);
-                NSAbsoluteValue.text = "absoluteValue = " + n.ToString();
+                NSdirection = "N";
+                float N = Mathf.Abs(tLatitude - dLatitude);
+                NSAbsoluteValue.text = "absoluteValue distance = " + N.ToString();
             }
             else {
                 NS.text = "";
@@ -170,7 +188,7 @@ public class LocationControls : MonoBehaviour
                 WE.text = "target is West";
                 WEdirection = "W";
                 float W = Mathf.Abs(tLongitude - dLongitude);
-                WEAbsoluteValue.text = "absoluteValue = " + W.ToString();
+                WEAbsoluteValue.text = "absoluteValue  distance = " + W.ToString();
             }
 
             else if (tLongitude > dLongitude && (Mathf.Abs(tLongitude - dLongitude)) > .0001f)
@@ -208,7 +226,7 @@ public class LocationControls : MonoBehaviour
                 detected.text = "Direction Detected NW - Pointing towards target";
                 indicatorAnimator.SetTrigger("DirectionFound");
             }
-            if (totalDirection == "N" && 315.0f < trueHeading || trueHeading <= 45.0f)
+            if (totalDirection == "N" && ((315.0f < trueHeading && trueHeading <= 360.0f ) || (0.0f <= trueHeading && trueHeading <= 45.0)))
             {
                 detected.text = "Direction Detected N - Pointing towards target";
                 indicatorAnimator.SetTrigger("DirectionFound");

@@ -12,6 +12,8 @@ public class Map : MonoBehaviour
     public Transform offScreenMap;
     public float speed;
     private bool offScreen;
+    public Animator mapAnim;
+    public Button goButton;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +26,15 @@ public class Map : MonoBehaviour
     {
         if (offScreen == false)
         {
+
+               
+
             transform.position = Vector2.MoveTowards(transform.position, onScreenMap.position, speed * Time.deltaTime);
            
         }
         else
         {
+
             transform.position = Vector2.MoveTowards(transform.position, offScreenMap.position, speed * Time.deltaTime);
         }
     }
@@ -36,13 +42,16 @@ public class Map : MonoBehaviour
     {
         if (offScreen == true)
         {
-
+            mapAnim.SetTrigger("FadeIN");
             offScreen = false;
+            goButton.interactable = false;
             buttonText.text = "Hide Map";
         }
         else
         {
+            mapAnim.SetTrigger("FadeOUT");
             offScreen = true;
+            goButton.interactable = true;
             buttonText.text = "Map";
         }
     }

@@ -45,6 +45,12 @@ Builds/
 Assets/EffectExamples/
 Assets/OpenCVForUnity/
 
+
+#ignore any copyrighted material
+Assets/Audio
+Assets/Animations
+Assets/stopBeaconAnimator.anim
+
 #Ignore meta files
-*.meta
+*.meta 
 
