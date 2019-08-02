@@ -705,7 +705,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a30d03a3a6c084be0a304129fee2c710,
+      objectReference: {fileID: 21300000, guid: 713dbffc569474563af0cc0303946eb8,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d3b58e614ae4201b09b09fe2d99893, type: 3}
@@ -816,6 +816,11 @@ PrefabInstance:
       propertyPath: transitionAnim
       value: 
       objectReference: {fileID: 1517948316}
+    - target: {fileID: 153000861675069564, guid: 82b269971587749b983cd49148f7ea8e,
+        type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b269971587749b983cd49148f7ea8e, type: 3}
 --- !u!114 &1645196686 stripped

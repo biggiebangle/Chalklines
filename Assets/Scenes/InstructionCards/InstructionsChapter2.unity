@@ -560,7 +560,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 605ec1e03d8d446838346d052ff0e12e,
+      objectReference: {fileID: 21300000, guid: 3477aebd7ea1748b8a0e70bf5001e0b2,
         type: 3}
     - target: {fileID: 7678576115997908912, guid: 33136ed82840e45ddaca294faf380915,
         type: 3}
@@ -630,8 +630,9 @@ PrefabInstance:
     - target: {fileID: 7678576115175239531, guid: 33136ed82840e45ddaca294faf380915,
         type: 3}
       propertyPath: m_Text
-      value: When ready, press Go, allow geolocation, and find this house. When you've
-        reached the area, the next chapter should activate automatically.
+      value: When ready, press Go and find the bottom of these stairs as shown in
+        this photo. When the location of your phone and the geolocation coordinates
+        match, the next chapter activates automatically.
       objectReference: {fileID: 0}
     - target: {fileID: 8363031275237310541, guid: 33136ed82840e45ddaca294faf380915,
         type: 3}
@@ -682,6 +683,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
+        type: 3}
+      propertyPath: transitionAnim
+      value: 
+      objectReference: {fileID: 1052276037}
+    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
+        type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
+        type: 3}
+      propertyPath: alternateSceneName
+      value: AudioScene2
       objectReference: {fileID: 0}
     - target: {fileID: 8572677562889400651, guid: 3e18d9f16b1df46e0b42526e003e21fa,
         type: 3}
@@ -737,21 +753,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
-        type: 3}
-      propertyPath: transitionAnim
-      value: 
-      objectReference: {fileID: 1052276037}
-    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
-        type: 3}
-      propertyPath: level
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8572677562889400648, guid: 3e18d9f16b1df46e0b42526e003e21fa,
-        type: 3}
-      propertyPath: alternateSceneName
-      value: AudioScene2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e18d9f16b1df46e0b42526e003e21fa, type: 3}

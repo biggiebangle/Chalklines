@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quad
       objectReference: {fileID: 0}
+    - target: {fileID: 4136214902869998760, guid: 3d3c91126351b46a9bf41c8e90581de8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4136214902869998764, guid: 3d3c91126351b46a9bf41c8e90581de8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -796,7 +801,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a30d03a3a6c084be0a304129fee2c710,
+      objectReference: {fileID: 21300000, guid: 713dbffc569474563af0cc0303946eb8,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d3b58e614ae4201b09b09fe2d99893, type: 3}

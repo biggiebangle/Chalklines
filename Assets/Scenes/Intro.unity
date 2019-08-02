@@ -1361,6 +1361,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: Chalklines
       objectReference: {fileID: 0}
+    - target: {fileID: 2860782706781174275, guid: c0461773ea1b44d7c827ed4d1e5b59d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0461773ea1b44d7c827ed4d1e5b59d6, type: 3}
 --- !u!224 &1897618545 stripped

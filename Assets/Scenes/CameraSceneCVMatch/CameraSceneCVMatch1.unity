@@ -214,6 +214,11 @@ PrefabInstance:
       propertyPath: transitionAnim
       value: 
       objectReference: {fileID: 822608279}
+    - target: {fileID: 153000861675069564, guid: 82b269971587749b983cd49148f7ea8e,
+        type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b269971587749b983cd49148f7ea8e, type: 3}
 --- !u!114 &2039927701 stripped

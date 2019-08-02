@@ -139,7 +139,7 @@ public class LocationControls : MonoBehaviour
             }
             //destroy hint object? and set trigger permanent during session, so you can use a back button
 
-            distance.text = "Distance : " + proximity.ToString();
+            distance.text = "Distance from chapter activation: " + proximity.ToString();
             detected.text = "Target Detected";
           // buttonAnimator.SetTrigger("LocationFound");
             NS.text = "";
@@ -147,14 +147,15 @@ public class LocationControls : MonoBehaviour
             internalCompass.text = "";
             service.Stop();
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(sceneIndex + 1));
+            //LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(sceneIndex + 1));
+            SceneManager.LoadScene(sceneIndex + 1);
 
         }
         else
         {
-            distance.text = "Out of Range Distance : " + proximity.ToString(); 
+            distance.text = "Distance from chapter activation: " + proximity.ToString(); 
             //If phone faces the target, attached or animate in a gameobject
-           internalCompass.text = "True Heading: " + Input.compass.trueHeading;
+           internalCompass.text = "Phone compass heading: " + Input.compass.trueHeading;
             totalDirection = "";
             NS.text = "";
             WE.text = "";
