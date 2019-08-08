@@ -69,8 +69,8 @@ public class SceneTransitions : MonoBehaviour {
         if (levelPassed >= level)
         {
             //Load audio async??
-            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(alternateSceneName));
-           //SceneManager.LoadScene(alternateSceneName);
+           //LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(alternateSceneName));
+            SceneManager.LoadScene(alternateSceneName);
         }
         else
         {

@@ -41,6 +41,7 @@ public class WebCamTextureMarkerLessAR : MonoBehaviour
 
     public GameObject AudioMatchGameObject;
     AudioSource MatchAudio;
+    bool MatchAudioPlayed;
 
  
 
@@ -185,6 +186,7 @@ public class WebCamTextureMarkerLessAR : MonoBehaviour
    
         Animator = panelAnimationGameObject.GetComponent<Animator>();
         MatchAudio = AudioMatchGameObject.GetComponent<AudioSource>();
+        MatchAudioPlayed = false;
 
        // OutlineTransform = OutlineImageGameObject.GetComponent<Transform>();
 
@@ -423,8 +425,10 @@ public class WebCamTextureMarkerLessAR : MonoBehaviour
                 if (patternFound && !MatchAudio.isPlaying) {
                //
                 Debug.Log("ACTIVATE");
-                MatchAudio.Play();
-              
+                if (MatchAudioPlayed == false) {
+                    MatchAudio.Play();
+                    MatchAudioPlayed = true;
+                }
                 LC.CVMatch();
                 CameraMatch();
 
@@ -462,20 +466,19 @@ public class WebCamTextureMarkerLessAR : MonoBehaviour
 
     public void CameraMatch()
     {
+ 
+      StartCoroutine(LoadScene());
+
+   }
 
 
-       //StartCoroutine(LoadScene());
 
-  // }
-
-
-
-   // IEnumerator LoadScene()
-  // {
-        Animator.SetTrigger("end");
-        //Load audio async
-      // yield return new WaitForSeconds(.2f);
-        LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(NextSceneName));
+   IEnumerator LoadScene()
+    {
+        Animator.SetTrigger("end"); 
+       yield return new WaitForSeconds(.5f);//Wait .5 seconds beforeloading next scene so match audio can play completely 
+       //LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync(NextSceneName));
+        SceneManager.LoadSceneAsync(NextSceneName);
 
     }
     /// <summary>

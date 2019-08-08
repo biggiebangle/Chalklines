@@ -34,30 +34,44 @@ public class HelpScript : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-        public void ResetPlayerPrefs()
+   public void ResetPlayerPrefs()
     {
 
         PlayerPrefs.DeleteAll();
+        SceneToLoad("MainMenu");
     }
 
-    public void ResetLevelTwo()
+    public void LevelOneAvailable()
     {
-         
+
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("LevelPassed", 1);
+        SceneToLoad("MainMenu");
+
     }
 
-    public void ResetLevelThree()
+    public void LevelTwoAvailable()
     {
          
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("LevelPassed", 2);
+        SceneToLoad("MainMenu");
+
     }
 
-    public void ResetLevelFour()
+    public void LevelThreeAvailable()
     {
          
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("LevelPassed", 3);
+        SceneToLoad("MainMenu");
+    }
+
+    public void LevelFourAvailable()
+    {
+         
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("LevelPassed", 4);
+        SceneToLoad("MainMenu");
     }
 }

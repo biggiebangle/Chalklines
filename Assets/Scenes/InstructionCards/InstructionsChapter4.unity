@@ -437,6 +437,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 424702237}
+    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InstructionsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7678576115631417155, guid: 33136ed82840e45ddaca294faf380915,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -582,21 +597,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 424702237}
-    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InstructionsScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678576116206852445, guid: 33136ed82840e45ddaca294faf380915,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8363031275237310541, guid: 33136ed82840e45ddaca294faf380915,
         type: 3}

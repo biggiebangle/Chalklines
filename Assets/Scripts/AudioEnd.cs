@@ -18,6 +18,7 @@ public class AudioEnd : MonoBehaviour
 
     public string nextSceneName;
     public AudioSource audioName;
+    public AudioSource pressButtonPleaseSound;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,8 @@ public class AudioEnd : MonoBehaviour
         paused = true;
         buttonText.text = "Play";
         timeStarted = false;
-}
+        pressButtonPleaseSound.Play();
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,6 +43,10 @@ public class AudioEnd : MonoBehaviour
 
         if(paused == true)
         {
+           if (timeStarted == false) {
+                //Only need this initially
+                pressButtonPleaseSound.Stop();
+            }
             audioName.Play();
             paused = false;
             buttonText.text = "Pause";
@@ -59,18 +65,18 @@ public class AudioEnd : MonoBehaviour
     private IEnumerator ChangeSceneAtEndofAudio()
     {
         //yield return new WaitForSeconds(nameClip.clip.length);
+        //what is this 5 for? I dont think I need it!
         yield return new WaitForSeconds(5);
         //print(nameClip.time);
         if (System.Math.Abs(audioName.time) > V)
         {
             timeStarted = true;
+
         }
         //nameClip.time == nameClip.clip.length
         if (timeStarted == true && System.Math.Abs(audioName.time) == V)
         {
-
-            //Fadeout scene - aka trigger animation? or should animation just be at beginning? and stop audio
-
+ 
             print("end audio");
             transitionAnim.SetTrigger("end");
             yield return new WaitForSeconds(1.5f);

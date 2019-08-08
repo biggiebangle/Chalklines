@@ -293,12 +293,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1542410242 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 203021996458134437, guid: 38265a6f6d3d3436291cb15389544f97,
+    type: 3}
+  m_PrefabInstance: {fileID: 6188041604851520801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1920652457 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8545935804491700060, guid: 38265a6f6d3d3436291cb15389544f97,
     type: 3}
   m_PrefabInstance: {fileID: 6188041604851520801}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1920652458
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920652457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5afce3ed99051488db67a47bc2e96221, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1540512004453210355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,6 +361,11 @@ PrefabInstance:
       propertyPath: audioName
       value: 
       objectReference: {fileID: 841809181}
+    - target: {fileID: 1540512005289698799, guid: fe0b63d9219c64c18a3cb3a0a52cf434,
+        type: 3}
+      propertyPath: pressButtonPleaseSound
+      value: 
+      objectReference: {fileID: 1542410242}
     - target: {fileID: 1540512005289698798, guid: fe0b63d9219c64c18a3cb3a0a52cf434,
         type: 3}
       propertyPath: m_audioClip
@@ -566,6 +596,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 203021996458134437, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 203021996458134437, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5439638ab660b4193acf88a89bcde489, type: 3}
     - target: {fileID: 6188041605070871521, guid: 38265a6f6d3d3436291cb15389544f97,
         type: 3}
       propertyPath: m_LocalPosition.x

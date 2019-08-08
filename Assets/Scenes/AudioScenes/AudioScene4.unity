@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 203021996458134437, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5439638ab660b4193acf88a89bcde489, type: 3}
     - target: {fileID: 6188041605070871521, guid: 38265a6f6d3d3436291cb15389544f97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,16 +299,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 75
       objectReference: {fileID: 0}
-    - target: {fileID: 2664019598548898426, guid: 38265a6f6d3d3436291cb15389544f97,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2267957612153337458, guid: 38265a6f6d3d3436291cb15389544f97,
-        type: 3}
-      propertyPath: m_Text
-      value: Chapter 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6188041604361897129, guid: 38265a6f6d3d3436291cb15389544f97,
         type: 3}
       propertyPath: source
@@ -315,11 +310,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 38937489c8728465dacb57d4cec618c6,
         type: 3}
-    - target: {fileID: 6474455007462945065, guid: 38265a6f6d3d3436291cb15389544f97,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1956392217130261815, guid: 38265a6f6d3d3436291cb15389544f97,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -365,6 +355,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SoundControl
       objectReference: {fileID: 0}
+    - target: {fileID: 6474455007462945065, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664019598548898426, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267957612153337458, guid: 38265a6f6d3d3436291cb15389544f97,
+        type: 3}
+      propertyPath: m_Text
+      value: Chapter 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38265a6f6d3d3436291cb15389544f97, type: 3}
 --- !u!114 &664397074 stripped
@@ -391,6 +396,31 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 664397073}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &664397077 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 203021996458134437, guid: 38265a6f6d3d3436291cb15389544f97,
+    type: 3}
+  m_PrefabInstance: {fileID: 664397073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &664397078
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664397075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5afce3ed99051488db67a47bc2e96221, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &737201256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -670,6 +700,11 @@ PrefabInstance:
       propertyPath: transitionAnim
       value: 
       objectReference: {fileID: 664397076}
+    - target: {fileID: 1540512005289698799, guid: fe0b63d9219c64c18a3cb3a0a52cf434,
+        type: 3}
+      propertyPath: pressButtonPleaseSound
+      value: 
+      objectReference: {fileID: 664397077}
     - target: {fileID: 1540512005289698798, guid: fe0b63d9219c64c18a3cb3a0a52cf434,
         type: 3}
       propertyPath: m_audioClip
